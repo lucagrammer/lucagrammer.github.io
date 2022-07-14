@@ -1,28 +1,64 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <v-app-bar
+      app
+      flat
+      rounded
+      fixed
+      color="background"
+      class="container pt-0 pb-0"
+    >
+      <div>
+        <div class="website-title"><span class="name">Luca</span> Minotti</div>
+      </div>
+    </v-app-bar>
+
+    <v-main>
+      <Home />
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Home from "./components/Home";
 
 export default {
-  name: 'App',
+  name: "App",
+
   components: {
-    HelloWorld
-  }
-}
+    Home,
+  },
+
+  data: () => ({
+    //
+  }),
+};
 </script>
 
+<style scoped>
+.website-title {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 25px;
+  word-spacing: 5px;
+  letter-spacing: 0;
+}
+.website-title .name {
+  font-weight: 300;
+}
+</style>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+html,
+body,
+main {
+  background-color: var(--v-background-base) !important;
+}
+.theme--light.v-application {
+  color: var(--v-dark-base) !important;
+}
+
+.v-application .v-application--wrap *, * {
+  font-family: "Inter", sans-serif !important;
 }
 </style>
