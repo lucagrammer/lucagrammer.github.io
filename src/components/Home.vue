@@ -12,7 +12,7 @@
             Milano in July 2022. <br/>
 
             I'm based near Milan and I am currently collaborating as a full-stack web
-            developer at the Department of Electronics, Informatics and Bioengineering
+            developer and data analyst at the Department of Electronics, Informatics and Bioengineering
             (DEIB) of Politecnico di Milano. <v-icon right small @click="openLink('https://www.deib.polimi.it/ita/home')">mdi-open-in-new</v-icon>
           </p>
           <p class="font-weight-regular">
@@ -30,6 +30,7 @@
         <v-col cols=12 sm=4 class="avatar" order="0" order-sm="1">
           <v-avatar size="250" max-height="40vh" max-width="40vh">
               <v-img class="colored-background" max-height="40vh" max-width="40vh"  aspect-ratio="1" :src="require('../assets/profile.png')"/>
+
           </v-avatar>
         </v-col>
         <v-col cols=12 sm="10" class="mb-0 pb-0" order="2" order-sm="2">

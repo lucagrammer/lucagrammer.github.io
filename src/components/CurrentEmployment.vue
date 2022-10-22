@@ -42,7 +42,7 @@ export default {
           img: require("../assets/deib_logo0.png"),
           color: 'cyan',
           date: 'February 2022 - Current',
-          position: 'Full Stack Web Developer',
+          position: 'Full Stack Web Developer and Data Analyst',
           place: 'Politecnico di Milano',
           department: 'Department of Electronics, Informatics and Bioengineering (DEIB)',
           body: 'The responsibilities include the development of multiple tools of interest to the department: from the user interface to the backend and data analysis system.'
