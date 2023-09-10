@@ -108,11 +108,11 @@ export default {
           tags: ['Complex UX','Vue.js', 'UX & UI design'],
           subtitle: 'Politecnico di Milano',
           expandedSubtitle: 'Collaboration with DEIB of Politecnico di Milano',
-          subsubtitle: 'Development of a complex and highly interactive user interface to search for a search engine for the exploration of scientific literature using the “graphical abstract” paradigm.',
+          subsubtitle: 'Development of a complex and highly interactive user interface for a search engine for the exploration of scientific literature using the “graphical abstract” paradigm.',
           cover: require("../assets/works/gs/cover.png"),
           url: 'http://geco.deib.polimi.it/graph-search/',
           intro:
-              '<p>Design and development of a complex and <span class="colored-text">highly interactive user interface</span> to search for ' +
+              '<p>Design and development of a complex and <span class="colored-text">highly interactive user interface</span> for ' +
               '<span class="colored-text">a search engine</span> for the exploration of scientific literature using the “graphical abstract” paradigm.</p>' +
               '<p>Searching for information over graphs is rather intuitive, as users can express queries in ' +
               'the form of graph patterns. We consider the use of “graphical abstracts” (small graphs ' +
