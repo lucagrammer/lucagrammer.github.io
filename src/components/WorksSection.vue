@@ -2,7 +2,7 @@
   <v-col cols=12 sm=10 class="mt-0">
     <h1 class="font-weight-bold mb-0 text--primary colored-text colored-text-var2">Works</h1>
     <v-row class="container ma-auto">
-      <v-col v-for="work in works" :key="work.id" cols=12 md="6" lg="4" class="mt-0">
+      <v-col v-for="work in works.filter(x=>!x.hidden)" :key="work.id" cols=12 md="6" lg="4" class="mt-0">
         <v-card class="mx-auto rounded-xl" flat>
           <v-img
               @click="showWork=true; showingWork=work"
@@ -59,13 +59,126 @@ export default {
   data() {
     return {
       works: [
-
+        {
+          id: 'recomb',
+          title: 'RecombinHunt',
+          dateStart: 'Oct 2022',
+          dateEnd: 'Jan 2023',
+          tags: ['Complex UX','Vue.js', 'UX & UI design'],
+          subtitle: 'Politecnico di Milano',
+          expandedSubtitle: 'Collaboration with DEIB of Politecnico di Milano',
+          subsubtitle: 'Development of an interactive and rich user interface for the analysis of genomic sequences to identify recombinations between SARS-CoV-2 variants',
+          cover: require("../assets/works/rc/cover.png"),
+          url: 'https://lucagrammer.github.io/recombinhunt-test/',
+          urlDisclaimer: 'DEMO VERSION ONLY! Using mocked data. Actual engine is not publicly available.',
+          intro:
+              '<p>Development of an interactive and rich user interface for the analysis of genomic ' +
+              'sequences to identify <span class="colored-text">recombinations between SARS-CoV-2 variants</span>' +
+              '</p>' +
+              '<p>The intuitive web app allows the user to select the sequence to be analyzed in several ways:' +
+              ' uploading it directly (FASTA file), providing the mutation list, or providing the sequence ID. ' +
+              'In the latter case, the system will take care of downloading the corresponding sequence from the database.</p>' +
+              '<p>After preliminary analysis, the user is informed of the estimated probability ' +
+              'that the sequence is the result of recombination of variants.' +
+              'Proceeding, the complete analysis, including recurrence plot, is generated. ' +
+              'The latter plot provides a range of possible recombinations and the probability ' +
+              'associated with the pair of lineages.' +
+              'By selecting pairs from this plot, the user can deepen the analysis by ' +
+              'generating similarity plots.</p>' +
+              '<p>The graphs are <span class="colored-text">extremely flexible</span> and allow the user to perform as many ' +
+              'operations as he or she wishes, including: adding annotations, focusing ' +
+              'on a specific range, or even combining two similarity graphs into a ' +
+              'comparison view.</p>',
+          screenshots: [
+            require("../assets/works/rc/1.png"),
+            require("../assets/works/rc/2.png"),
+            require("../assets/works/rc/3.png"),
+            require("../assets/works/rc/4.png"),
+            require("../assets/works/rc/5.png"),
+            require("../assets/works/rc/6.png"),
+            require("../assets/works/rc/7.png"),
+            require("../assets/works/rc/8.png")
+          ]
+        },
+        {
+          id: 'gs',
+          title: 'Graph-search',
+          dateStart: 'Jul 2022',
+          dateEnd: 'Oct 2022',
+          tags: ['Complex UX','Vue.js', 'UX & UI design'],
+          subtitle: 'Politecnico di Milano',
+          expandedSubtitle: 'Collaboration with DEIB of Politecnico di Milano',
+          subsubtitle: 'Development of a complex and highly interactive user interface to search for a search engine for the exploration of scientific literature using the “graphical abstract” paradigm.',
+          cover: require("../assets/works/gs/cover.png"),
+          url: 'http://geco.deib.polimi.it/graph-search/',
+          intro:
+              '<p>Design and development of a complex and <span class="colored-text">highly interactive user interface</span> to search for ' +
+              '<span class="colored-text">a search engine</span> for the exploration of scientific literature using the “graphical abstract” paradigm.</p>' +
+              '<p>Searching for information over graphs is rather intuitive, as users can express queries in ' +
+              'the form of graph patterns. We consider the use of “graphical abstracts” (small graphs ' +
+              'of concepts) as a means for expressing graph searches over existing biomedical literature, ' +
+              'providing an interesting new application for exploring the supporting literature ' +
+              'of given research findings.</p>',
+          screenshots: [
+            require("../assets/works/gs/1.png"),
+            require("../assets/works/gs/2.png"),
+            require("../assets/works/gs/3.png"),
+            require("../assets/works/gs/4.png"),
+            require("../assets/works/gs/5.png"),
+            require("../assets/works/gs/6.png"),
+            require("../assets/works/gs/7.png"),
+            require("../assets/works/gs/8.png")
+          ]
+        },
+        {
+          id: 'vh2',
+          title: 'Variant Hunter 2.0',
+          dateStart: 'Jul 2022',
+          dateEnd: 'Sept 2022',
+          tags: ['Redesign','Vue.js', 'Python-Flask', 'Data Analysis', 'UX & UI design'],
+          subtitle: 'Politecnico di Milano',
+          expandedSubtitle: 'Collaboration with DEIB of Politecnico di Milano',
+          subsubtitle: 'New look and dozens of new features for the VariantHunter tool. Redesigned from the ground up for better performance and even greater flexibility of use.',
+          cover: require("../assets/works/vh2/cover.png"),
+          url: 'http://cerilab.deib.polimi.it/variant_hunter/about',
+          repoUrl: 'https://github.com/DEIB-GECO/VariantHunter',
+          intro:
+              '<b class="text-overline">Introduction</b>' +
+              '<p>Variant Hunter is a highly flexible and user-friendly tool for systematic monitoring of the evolution of new ' +
+              '<span class="colored-text">SARS-CoV-2 variants</span> at regional, national and continental levels.' +
+              '<br>While more than tens of millions of genomic sequences of SARS-CoV-2 are available, their analysis would ' +
+              'generally require a significant amount of manual work and engage a huge number of virologists worldwide.' +
+              'Variant Hunter moves toward automating this work. ' +
+              '</p>' +
+              '<b class="text-overline">What\'s new</b>' +
+              '<p>The tool has been redesigned from the ground up, based on feedback from end users and taking into account the direction the project has taken. ' +
+              'Below are some of the improvements:</p>' +
+              '<ul>' +
+              '<li><b class="colored-text">New (beautiful) design</b>: the new interface separates the results from the analysis creation panel.</li>' +
+              '<li><b class="colored-text">Introduction to lineage-specific analyses with multiple lineages</b>: you can now select multiple lineages in lineage-specific analyses. More: you can select entire branches of lineages by selecting values such as BA.1.* .</li>' +
+              '<li><b class="colored-text">New speed Heat map</b>: a new heat map view allows you to discover the fastest growing mutations at a glance.' +
+              '<li><b class="colored-text">Pick up where you left off</b>: now the application keeps all your data stored in your browser.</li>' +
+              '<li><b class="colored-text">Introduction to tags</b>: it is now possible to associate a tag to each analysis. Tags allow you to group past analyses. But there is more: indeed, tags allow you to preserve filtering and sorting options between various analyses. So you can apply the same filters to an entire group of analyses.</li>' +
+              '<li><b class="colored-text">Integration of covSPECTRUM</b>: It is now possible, by selecting mutations from the table, to generate a search on covSPECTRUM for those mutations.</li>' +
+              '<li><b class="colored-text">Quick adjustment of analysis parameters</b>: with the brand new controls in the toolbar you can quickly and easily change the analysis parameters. For example you can move from lineage-specific to lineage-independent search; move to a larger geographic area and you can also shift the analysis period.</li>' +
+              '<b class="text-overline"><a target="_blank" class="text-decoration-none" href="https://github.com/DEIB-GECO/VariantHunter/releases">See full changelog...</a></b>' +
+              '</ul>',
+          screenshots: [
+            require("../assets/works/vh2/1.png"),
+            require("../assets/works/vh2/2.png"),
+            require("../assets/works/vh2/3.png"),
+            require("../assets/works/vh2/4.png"),
+            require("../assets/works/vh2/5.png"),
+            require("../assets/works/vh2/6.png"),
+            require("../assets/works/vh2/7.png")
+          ]
+        },
         {
           id: 'vh',
           title: 'Variant Hunter',
           dateStart: 'Jan 2022',
           dateEnd: 'Jul 2022',
-          tags: ['Vue.js', 'Python-Flask', 'Data Analysis', 'UX & UI design'],
+          tags: ['Vue.js', 'Python-Flask', 'Data Analysis', 'UX & UI design', 'Docker'],
           subtitle: 'Master\'s thesis',
           expandedSubtitle: 'Master\'s thesis project at Politecnico di Milano',
           subsubtitle: 'A highly flexible and user-friendly tool for systematic monitoring of the evolution of new SARS-CoV-2 variants at regional, national and continental levels.',
@@ -104,6 +217,7 @@ export default {
           subsubtitle: 'Design and implementation of the website for the EIT Manufacturing Master School at Politecnico di Milano.',
           cover: require("../assets/works/eitm/cover.png"),
           url: 'https://www.eitm.polimi.it',
+          urlDisclaimer: 'Current design may differ due to subsequent changes from 3rd parties.',
           intro:
               'The project consists of the development of the website of the EIT Manufacturing Master School course at the Politecnico di Milano. <br>' +
               'The <span class="colored-text">focus</span> of this project was on the study of a UX that would facilitate browsing information about the course and how to enroll. <br>' +
@@ -120,6 +234,7 @@ export default {
           ]
         },
         {
+          hidden: true,
           id: 'recsys',
           title: 'Recommender System',
           dateStart: 'Nov 2021',
@@ -164,7 +279,8 @@ export default {
           expandedSubtitle: 'Project fot the Hypermedia Applications (Web and Multimedia) course, Politecnico di Milano',
           subsubtitle: 'Design and implementation of a web application with a very high level of accessibility, usability and SEO.',
           cover: require("../assets/works/plugit/cover.png"),
-          url: 'https://plug-it.herokuapp.com/',
+          //url: 'https://plug-it.herokuapp.com/',
+          urlDisclaimer: 'The website is no more publicly accessible',
           repoUrl: 'https://github.com/lucagrammer/Plug-IT',
           intro: 'The project consists of:\n' +
               '<ul><li>drawing up an <span class="colored-text">evaluation of the usability</span> of the Reply.com web application through User Testing and Inspections;</li>' +
@@ -206,6 +322,7 @@ export default {
           ]
         },
         {
+          hidden: true,
           id: 'meetings',
           title: 'Meetings App',
           dateStart: 'Jun 2020',
@@ -282,6 +399,7 @@ export default {
       showWork: false,
       imageZoom: false,
       tagColors: {
+        'Redesign': '#ef1212',
         'UX design': "#fe6a6a",
         'Usability': "#997d65",
         'Vue.js': "#6acafe",
@@ -296,6 +414,7 @@ export default {
         'Camunda': "#6a99fe",
         'Docker': "#00c8e3",
         'Accessibility': "#c202a8",
+        'Complex UX': "#3434f6",
         'SEO': "#e32200",
         'Nuxt.js': "#4c00e3",
         'Node.js': "#53e300",

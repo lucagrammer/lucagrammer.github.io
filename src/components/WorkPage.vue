@@ -43,13 +43,14 @@
             <v-btn v-if="showingWork.url" depressed rounded color="secondary" :href="showingWork.url" target="_blank"
                    class="colored-background mb-2 mr-2">
               <v-icon left>mdi-arrow-top-right</v-icon>
-              Open Website
+              Open Website<span v-if="showingWork.urlDisclaimer">*</span>
             </v-btn>
             <v-btn v-if="showingWork.repoUrl" depressed rounded color="secondary" :href="showingWork.repoUrl" target="_blank"
                    class="colored-background colored-background-var mb-2">
               <v-icon left>mdi-github</v-icon>
               GitHub repository
             </v-btn>
+            <div v-if="showingWork.urlDisclaimer" class="text-caption font-italic">*: <span class="text-decoration-underline">{{showingWork.urlDisclaimer}}</span></div>
           </v-container>
           <v-row justify="center">
             <v-col

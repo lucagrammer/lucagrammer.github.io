@@ -1,19 +1,29 @@
 
 <template>
-  <v-container>
-    <v-container>
+  <v-container class="px-0 px-sm-auto">
+    <v-container class="px-1 px-sm-auto">
       <v-row class="container ma-auto" justify="center" >
-        <v-col cols=12 sm=6 class="mt-0" order="1" order-sm="0">
-          <h1 class="font-weight-bold mb-0 text--primary colored-text colored-text-var2">Hi,</h1>
+        <v-col cols=12 sm=6 class="mt-0 slide-in-blurred-left" order="1" order-sm="0">
+          <h1 class="font-weight-bold mb-0 text--primary colored-text colored-text-var2 ">Hi,</h1>
 
           <p class="font-weight-regular">
             I'm Luca. I studied <i>Computer Engineering</i> and I got a master's
             degree in <i>Computer Science and Engineering</i> at Politecnico di
-            Milano in July 2022. <br/>
-
-            I'm based near Milan and I am currently collaborating as a full-stack web
-            developer and data analyst at the Department of Electronics, Informatics and Bioengineering
-            (DEIB) of Politecnico di Milano. <v-icon right small @click="openLink('https://www.deib.polimi.it/ita/home')">mdi-open-in-new</v-icon>
+            Milano in July 2022.
+          </p>
+          <p class="font-weight-regular">
+            I'm based near Milan and I am currently covering the role of
+            <span class="colored-text">IT consultant</span> at
+            Technology Reply Financial Services
+            <v-icon right small @click="openLink('https://www.reply.it')">mdi-open-in-new</v-icon>
+            , a leading IT consulting company.
+            Specifically, I work as a software engineer in the credit worthiness team
+            for a major banking institution.
+          </p>
+          <p class="font-weight-regular">
+            Previously, I collaborated as a full-stack web developer at the
+            Department of Electronics, Informatics and Bioengineering (DEIB)
+            of Politecnico di Milano. <v-icon right small @click="openLink('https://www.deib.polimi.it/ita/home')">mdi-open-in-new</v-icon>
           </p>
           <p class="font-weight-regular">
             My main interest is
@@ -27,32 +37,35 @@
           </p>
           <TextCarousel/>
         </v-col>
-        <v-col cols=12 sm=4 class="avatar" order="0" order-sm="1">
+        <v-col cols=12 sm=4 class="avatar slide-in-blurred-right" order="0" order-sm="1">
           <v-avatar size="250" max-height="40vh" max-width="40vh">
-              <v-img class="colored-background" max-height="40vh" max-width="40vh"  aspect-ratio="1" :src="require('../assets/profile.png')"/>
-
+            <transition name="bounce">
+                <v-img key=1 v-if="this.shownImg===0" class="secondary" max-height="40vh" max-width="40vh"  aspect-ratio="1" transition="fade" :src="this.imgs[0]"/>
+                <v-img key=2 v-else class="primary" max-height="40vh" max-width="40vh"  aspect-ratio="1" transition="fade" :src="this.imgs[1]"/>
+            </transition>
           </v-avatar>
         </v-col>
-        <v-col cols=12 sm="10" class="mb-0 pb-0" order="2" order-sm="2">
-          <v-btn depressed rounded color="secondary" href="mailto:minottiluca@icloud.com" class="colored-background mb-2" ><v-icon left>mdi-email</v-icon> Get in touch</v-btn>&nbsp;
+        <v-col cols=12 sm="10" class="mb-0 pb-0 slide-in-blurred-left" order="2" order-sm="2">
+          <v-btn depressed rounded color="secondary" href="mailto:minottiluca@icloud.com" class="colored-background mb-2 wobble-hor-bottom" ><v-icon left>mdi-email</v-icon> Get in touch</v-btn>&nbsp;
           <v-btn depressed rounded color="secondary" href="https://www.linkedin.com/in/lucagrammer" class="colored-background colored-background-var mb-2" ><v-icon left>mdi-linkedin</v-icon> LinkedIn</v-btn>&nbsp;
           <v-btn depressed rounded color="secondary" href="https://t.me/Lucagrammer" class="colored-background colored-background mb-2" ><v-icon left>mdi-send</v-icon> Telegram</v-btn>
         </v-col>
       </v-row>
 
-      <v-row class="container ma-auto" justify="center">
+      <v-row class="container ma-auto slide-in-blurred-left" justify="center">
         <CurrentEmployment/>
       </v-row>
-      <v-row class="container ma-auto" justify="center">
+      <v-row class="container ma-auto slide-in-blurred-left" justify="center">
         <WorksSection/>
       </v-row>
 
-      <div class="footer container">
+      <div class="footer container slide-in-blurred-left">
         <p class="contacts"><b>Contacts</b><br>
-          Mail: <a href="mailto:minottiluca@icloud.com">minottiluca@icloud.com</a><br>
-          Phone: <a href="tel:+393315228707">331-5228707</a>
+          Mail: <a href="mailto:minottiluca@icloud.com">minottiluca@icloud.com</a>
         </p>
-        Developed with love in Milan by Luca Minotti
+        Designed & developed with love in Milan by Luca Minotti. <br/>
+        Written in Vue.JS <br/>
+        Details matter.
       </div>
 
       <v-snackbar v-model="showSnackbar" color="error" content-class="text-h4 pr-7 pl-7 " bottom multi-line timeout="-1" app>
@@ -69,8 +82,15 @@ import CurrentEmployment from "@/components/CurrentEmployment";
 export default {
   name: "HelloWorld",
   components: {CurrentEmployment, WorksSection, TextCarousel},
+  mounted(){
+    setInterval(()=>{
+      this.shownImg= this.shownImg===1? 0 : 1;
+    }, 5000)
+  },
   data: () => ({
-    showSnackbar: false
+    showSnackbar: false,
+    shownImg: 0,
+    imgs: [require('../assets/profile.png'), require('../assets/profile-alt.png')],
   }),
   methods:{
     /**
@@ -149,4 +169,5 @@ export default {
 .avatar{
   text-align: center;
 }
+
 </style>
