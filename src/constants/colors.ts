@@ -1,0 +1,17 @@
+export const TAG_COLORS: {[key: string]: string} = {
+  'Redesign': '#ef1212',
+  'UX design': "#fe6a6a",
+  'Usability': "#997d65",
+  'Vue.js': "#4bb382",
+  'Python-Flask': "#fe6af7",
+  'Python': "#fe6af7",
+  'Data Analysis': "#6a83fe",
+  'UX & UI design': "#fe6a6a",
+  'Docker': "#00c8e3",
+  'Accessibility': "#c202a8",
+  'Complex UX': "#3434f6",
+  'SEO': "#e32200",
+  'Nuxt.js': "#4c00e3",
+  'Java': "#b9d504",
+  'Javascript': "#ec2b65",
+}

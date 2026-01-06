@@ -1,0 +1,70 @@
+@use "tailwindcss";
+
+@theme{
+  /* Mapping Material 3 CSS Variables to Tailwind Theme */
+  --color-primary: var(--mat-sys-primary);
+  --color-secondary: var(--mat-sys-secondary);
+  --color-tertiary: var(--mat-sys-tertiary);
+
+  /* Optional: Add containers if you want to use primary-container etc. */
+  --color-primary-container: var(--mat-sys-primary-container);
+  --color-on-primary: var(--mat-sys-on-primary);
+}
+
+
+.colored-text {
+  background: linear-gradient(
+      45deg,
+      var(--mat-sys-secondary),
+      var(--mat-sys-primary),
+      var(--mat-sys-tertiary)
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+}
+
+.colored-background{
+  background: linear-gradient(
+      45deg,
+      var(--mat-sys-secondary),var(--mat-sys-secondary),
+      var(--mat-sys-primary)
+  );
+}
+
+.colored-background.colored-background-var{
+  background: linear-gradient(
+      45deg,
+      var(--mat-sys-primary),
+      var(--mat-sys-secondary)
+  );
+}
+
+.colored-text.colored-text-var{
+  background: linear-gradient(
+      45deg,
+      var(--mat-sys-tertiary),
+      var(--mat-sys-primary),
+      var(--mat-sys-secondary)
+  );
+  background-clip: text;
+}
+
+.colored-text.colored-text-var2, .colored-hover-text:hover  {
+  background: linear-gradient(
+      45deg,
+      var(--mat-sys-secondary),
+      var(--mat-sys-tertiary)
+  );
+  background-clip: text;
+}
+
+.readable-paragraphs p {
+  margin-bottom: 16px;
+}
+.text-overline {
+  font-weight: 500;
+  line-height: 2rem;
+  letter-spacing: .1666666667em;
+  text-transform: uppercase !important;
+}

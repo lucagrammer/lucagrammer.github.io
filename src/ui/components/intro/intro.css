@@ -1,0 +1,15 @@
+p{
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+span[matListItemTitle]{
+  font-size: 12px;
+  line-height: 13px;
+}
+span[matListItemLine]{
+  font-size: 12px;
+  line-height: 13px;
+}
+
+

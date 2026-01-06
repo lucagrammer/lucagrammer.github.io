@@ -1,0 +1,13 @@
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+  @for (img of images(); track img; let i = $index) {
+    <div class="group relative rounded-2xl overflow-hidden drop-shadow-2xl cursor-zoom-in"
+         (click)="openGallery(i)">
+
+      <img [src]="img.src" class="h-full w-full object-cover"
+           [alt]="img.alt"
+      />
+    </div>
+  }
+
+</div>

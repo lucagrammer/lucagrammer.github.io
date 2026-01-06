@@ -1,0 +1,100 @@
+
+// Include theming for Angular Material with `mat.theme-manager()`.
+// This Sass mixin will define CSS variables that are used for styling Angular Material
+// components according to the Material 3 design spec.
+// Learn more about theming and how to use it for your application's
+// custom components at https://material.angular.dev/guide/theming
+@use '@angular/material' as mat;
+@use 'theme' as themes;
+
+html {
+  height: 100%;
+  @include mat.theme((
+    color: (
+      primary: themes.$primary-palette,
+      tertiary: themes.$tertiary-palette,
+    ),
+    typography: Inter,
+    density: -1,
+  ));
+
+  color-scheme: light;
+  &.dark-theme {
+    color-scheme: dark;
+  }
+}
+
+body {
+
+  // Set a default background, font and text colors for the application using
+  // Angular Material's system-level CSS variables. Learn more about these
+  // variables at https://material.angular.dev/guide/system-variables
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-medium);
+
+  // Reset the user agent margin.
+  margin: 0;
+  height: 100%;
+}
+
+* {
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+:root {
+  @include mat.toolbar-overrides((
+    container-background-color: transparent,
+  ));
+
+  @include mat.button-overrides((
+    text-label-text-transform: uppercase,
+    filled-label-text-transform: uppercase,
+    outlined-label-text-transform: uppercase,
+    protected-label-text-transform: uppercase,
+    tonal-label-text-transform: uppercase,
+    protected-label-text-color: var(--mat-sys-on-primary)
+  ));
+
+  @include mat.snack-bar-overrides((
+    container-shape: 20px 20px 0 0
+  ))
+}
+
+.dense-3 {
+  @include mat.all-component-densities(-3);
+}
+
+// Button with gradient background not contained in any .custom-btn class
+:not(.custom-btn):is(.mat-mdc-raised-button,.mat-mdc-unelevated-button) {
+  background: linear-gradient(
+      45deg,
+      var(--mat-sys-secondary),
+      var(--mat-sys-secondary),
+      var(--mat-sys-primary)
+  );
+  background-origin: border-box;
+}
+
+.mat-mdc-snack-bar-container {
+  margin-bottom: 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.mdc-snackbar__surface {
+  min-width: 300px !important;
+  padding: 8px 24px !important;
+  padding-bottom: env(safe-area-inset-bottom, 0) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: none;
+}
+
+.mat-mdc-dialog-container .mdc-dialog__surface {
+  border-radius: 1.5rem !important; /* Extra rounded corners */
+  overflow: hidden !important;
+}
+
+.mat-mdc-dialog-content {
+  overflow-x: hidden !important; /* Fix horizontal scroll on gallery */
+}

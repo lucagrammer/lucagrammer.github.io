@@ -1,0 +1,44 @@
+@use "tailwindcss";
+
+@layer base {
+  ::-webkit-scrollbar {
+    width: 14px;
+  }
+
+  ::-webkit-scrollbar-track {
+    /* Uses the 'Surface Container' or 'Surface' color from your Material theme */
+    background-color: var(--mat-sys-surface, #fff);
+
+    html.dark & {
+      background-color: var(--mat-sys-surface-container-low, #0f172a);
+    }
+  }
+
+  ::-webkit-scrollbar-thumb {
+    /* Uses 'Outline Variant' for a subtle bar or 'Primary' for a bold one */
+    background-color: var(--mat-sys-outline-variant, rgba(0,0,0,0.2));
+    border: 4px solid transparent;
+    background-clip: padding-box;
+    border-radius: 10px;
+
+    &:hover {
+      /* Uses the 'Primary' color on hover for a subtle 'active' feel */
+      background-color: var(--mat-sys-primary);
+    }
+
+    html.dark & {
+      background-color: var(--mat-sys-outline, rgba(255,255,255,0.2));
+
+      &:hover {
+        background-color: var(--mat-sys-primary-fixed-dim);
+      }
+    }
+  }
+
+  /* Firefox Support using the same tokens */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--mat-sys-outline-variant) var(--mat-sys-surface);
+  }
+}
+

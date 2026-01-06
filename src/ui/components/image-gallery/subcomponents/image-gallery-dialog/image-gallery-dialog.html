@@ -1,0 +1,35 @@
+<div class="relative w-screen h-screen bg-black/95 flex items-center justify-center overflow-hidden" (click)="close()">
+
+  <div class="absolute top-4 right-4 md:top-8 md:right-8 z-100 pointer-events-auto">
+    <button mat-icon-button
+            class="text-white! bg-black/20! hover:bg-white/20! backdrop-blur-sm shadow-lg border border-white/10"
+            (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  @if (data.images.length > 1) {
+    <div class="absolute inset-x-4 md:inset-x-12 flex justify-between items-center z-50 pointer-events-none">
+      <button mat-mini-fab class="pointer-events-auto bg-black/40! text-white! backdrop-blur-md" (click)="prev($event)">
+        <mat-icon>arrow_back_ios_new</mat-icon>
+      </button>
+      <button mat-mini-fab class="pointer-events-auto bg-black/40! text-white! backdrop-blur-md" (click)="next($event)">
+        <mat-icon>arrow_forward_ios</mat-icon>
+      </button>
+    </div>
+  }
+
+  <div class="flex items-center justify-center w-full h-full p-4 md:p-12">
+    @let image = data.images[currentIndex()];
+    <img [src]="image.src" [alt]="image.alt"
+         class="max-w-full max-h-full object-contain shadow-2xl rounded animate-in fade-in zoom-in duration-300"
+         (click)="$event.stopPropagation()" />
+  </div>
+
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-none">
+    <div class="text-white/70 text-xs font-mono tracking-[0.2em] px-4 py-2 border border-white/10 rounded-full bg-black/40 backdrop-blur-md shadow-xl">
+      {{ currentIndex() + 1 }} <span class="text-white/30 mx-1">/</span> {{ data.images.length }}
+    </div>
+  </div>
+
+</div>

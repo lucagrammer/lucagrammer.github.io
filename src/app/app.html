@@ -1,0 +1,18 @@
+<mat-toolbar class="fixed top-0 left-0 right-0 z-10 h-16 flex items-center backdrop-blur-2xl">
+  <mat-chip-avatar class="ps-4 sm:hidden">
+    <img ngSrc="assets/images/profile.png" alt="Luca Minotti" height="560" width="560"
+         class="h-9 w-9 rounded-full mat-bg-primary">
+  </mat-chip-avatar>
+  <div class="flex px-3 sm:px-6 font-light uppercase tracking-wide text-2xl gap-2">
+    Luca<span class="font-medium">Minotti</span>
+  </div>
+
+  <span class="grow"></span>
+
+  <app-theme-button/>
+</mat-toolbar>
+
+<main class="pt-20 pb-10 px-4 max-w-5xl mx-auto">
+  <router-outlet/>
+</main>
+

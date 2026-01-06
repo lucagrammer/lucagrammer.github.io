@@ -1,0 +1,77 @@
+<div class="relative overflow-hidden">
+  <button (click)="dialogRef.close()"
+          class="absolute right-4 top-4 z-50 p-2  h-10 w-10 bg-black/20 hover:bg-black/40 backdrop-blur-md rounded-full text-white transition-all duration-300"
+          aria-label="Close dialog">
+    <mat-icon>close</mat-icon>
+  </button>
+
+  <mat-dialog-content class="m-0! p-0!">
+    <div class="relative h-64 w-full overflow-hidden">
+      <img [src]="showingWork().cover"
+           class="absolute inset-0 h-full w-full object-cover"
+           alt="Cover">
+      <div class="absolute inset-0 bg-gray-800/60 dark:bg-gray-900/60 backdrop-blur-md opacity-10 shadow-xl"> </div>
+
+    </div>
+
+    <div class="sticky top-0 z-30 -mt-24 w-full">
+      <div class="absolute inset-0 bg-gray-800/60 dark:bg-gray-900/60 backdrop-blur-md opacity-100 shadow-xl"> </div>
+
+      <div class="relative px-6 py-4 sm:px-10 text-white">
+      <span class="px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-[10px] font-semibold tracking-wider uppercase mb-1 inline-block">
+        {{ showingWork().dateStart }} — {{ showingWork().dateEnd }}
+      </span>
+        <h2 class="text-2xl md:text-3xl font-extrabold tracking-tight drop-shadow-md">
+          {{ showingWork().title }}
+        </h2>
+      </div>
+    </div>
+
+    <div class="px-6 py-8 sm:px-10 sm:py-10 bg-white dark:bg-gray-800">
+      <div class="mx-auto">
+
+        <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-2 font-medium">
+          {{ showingWork().expandedSubtitle }}
+        </p>
+
+        <div class="flex flex-wrap gap-2 mb-8">
+          @for(tag of showingWork().tags; track tag) {
+            <app-tag [tag]="tag" [tagColor]="TAG_COLORS[tag]"/>
+          }
+        </div>
+
+        <div class="prose dark:prose-invert max-w-none prose-ul:list-disc prose-ul:pl-5 prose-li:my-2"
+             [innerHTML]="showingWork().intro">
+        </div>
+
+        <div class="flex flex-wrap items-center gap-4 mt-10">
+          @if(showingWork().url; as website) {
+            <button matButton="elevated" (click)="openLink(website)">
+              <mat-icon>open_in_new</mat-icon>
+              Open website {{ showingWork().urlDisclaimer ? '*' : '' }}
+            </button>
+          }
+          @if(showingWork().repoUrl; as repoUrl) {
+            <button matButton="elevated"
+                    class="custom-btn bg-[#8250df]! hover:bg-[#8e5bed]! text-white!"
+                    (click)="openLink(repoUrl)">
+              <mat-icon svgIcon="github"/>
+              GitHub repository
+            </button>
+          }
+        </div>
+
+        @if(showingWork().urlDisclaimer) {
+          <p class="mt-4 text-[10px] text-slate-400 italic">
+            * {{ showingWork().urlDisclaimer }}
+          </p>
+        }
+
+        <div class="mt-12">
+          <h3 class="text-sm font-bold uppercase tracking-widest text-slate-400 mb-6">Gallery</h3>
+          <app-image-gallery [images]="showingWork().images"/>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+</div>

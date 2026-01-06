@@ -1,0 +1,36 @@
+<div class="max-w-4xl mx-auto p-6">
+  <h1 class="font-bold text-3xl mb-4 colored-text colored-text-var2">Works</h1>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 container mx-3">
+
+    @for(work of worksToShow(); track work.id) {
+      <div class="rounded-2xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 transition-all
+                  duration-300 ease-out hover:scale-[1.02] hover:ring-4 hover:ring-primary/20 transform-gpu
+                  will-change-transform flex flex-col h-full shadow-md">
+        <img (click)="openWork(work)" [src]="work.cover"
+             class="h-48 w-full object-cover cursor-pointer rounded-t-2xl"
+             alt="{{ work.title }} Cover Image"
+        />
+        <div class="p-4 flex flex-col grow">
+          <h2 class="text-xl cursor-pointer colored-text colored-hover-text" (click)="openWork(work)">
+            {{ work.title }}
+          </h2>
+          <div class="mb-2">{{ work.subtitle }}</div>
+          <div>{{ work.subline }}</div>
+          <div class="mt-2 flex flex-wrap gap-2">
+            @for(tag of work.tags; track tag) {
+              <app-tag [tag]="tag" [tagColor]="TAG_COLORS[tag]"/>
+            }
+          </div>
+          <div class="grow"></div>
+          <div class="flex justify-center mt-4">
+            <button mat-button color="primary" (click)="openWork(work)">
+              More info
+            </button>
+          </div>
+        </div>
+      </div>
+    }
+
+  </div>
+
+</div>

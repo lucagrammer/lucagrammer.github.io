@@ -1,0 +1,60 @@
+@use "tailwindcss";
+
+@theme{
+
+  --animate-shake: shake 4.8s 3s infinite both;
+
+  @keyframes shake {
+    0%,
+    15% {
+      transform: translateX(0%);
+      transform-origin: 50% 50%;
+    }
+    3% {
+      transform: translateX(-3px) rotate(-2deg);
+    }
+    6% {
+      transform: translateX(3px) rotate(2deg);
+    }
+    9% {
+      transform: translateX(-3px) rotate(-2deg);
+    }
+    12% {
+      transform: translateX(3px) rotate(2deg);
+    }
+    100% {
+    }
+  }
+
+  --animate-carousel-text: carousel-text 5s infinite 1s;
+  @keyframes carousel-text {
+    0% {
+      top: 0;
+    }
+    20% {
+      top: -20px;
+    }
+    40% {
+      top: -40px;
+    }
+    60% {
+      top: -60px;
+    }
+    80% {
+      top: -80px;
+    }
+    100% {
+      top: 0;
+    }
+  }
+
+  --animate-bg-rotate: rotateColors 10s infinite alternate;
+  @keyframes rotateColors {
+    0% {
+      background: var(--mat-sys-secondary);
+    }
+    100% {
+      background: var(--mat-sys-primary);
+    }
+  }
+}

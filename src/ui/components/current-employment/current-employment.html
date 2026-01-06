@@ -1,0 +1,63 @@
+<div class="container mx-auto my-0 py-0">
+
+  <div class="max-w-4xl mx-auto p-6">
+    @for (job of jobExperiences(); track $index; let isFirst = $first) {
+      <div class="flex">
+
+        <div class="flex flex-col items-center mr-4 sm:mr-8">
+          <div class="flex-none w-4.5 h-4.5 rounded-full border-2 border-white ring-1 ring-gray-200 {{isFirst?'bg-secondary animate-pulse':'bg-primary'}}"></div>
+          <div class="w-0.5 h-full bg-gray-200 -z-10"></div>
+        </div>
+
+        <div class="pb-12 flex-1">
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+
+            <div class="order-2 sm:order-1 flex-1">
+              <time class="text-xs font-bold uppercase tracking-widest {{isFirst?'text-secondary':'text-primary'}}">{{job.date}}</time>
+              <h3 class="text-lg font-bold  not-dark:text-gray-900 dark:text-slate-100 mt-1">{{job.position}}</h3>
+              <p class="text-md font-medium not-dark:text-gray-600 dark:text-slate-400 leading-snug">
+                <a [href]="job.companyLink" target="_blank" class="{{isFirst?'hover:text-secondary':'hover:text-primary'}} flex w-fit items-center gap-1">
+                  {{ job.place }}
+                  <mat-icon class="text-xs! leading-[1.9] px-2" aria-label="Link to company website">open_in_new</mat-icon>
+                </a>
+              </p>
+              <p class="text-xs font-normal not-dark:text-gray-600 dark:text-slate-400">{{ job.department }}</p>
+
+              <div class="mt-4 max-w-xl">
+                <div class="readable-paragraphs" [innerHTML]="job.body"></div>
+                @if(job.linkedinLink){
+                  <a matButton="text" class="-mt-2 scale-75" href="{{job.linkedinLink}}" target="_blank">More</a>
+                }
+              </div>
+
+              <!-- Technologies Used (keys and keysIcons)  -->
+              @if(job.keys && job.keys.length > 0) {
+                <div class="mt-4 flex flex-wrap gap-2 items-center">
+                  @for(key of job.keys; track key) {
+                    <div class="flex items-center gap-1 bg-gray-100 dark:bg-gray-700 rounded-full px-3 py-1 text-xs font-medium not-dark:text-gray-800 dark:text-gray-200 shadow-sm">
+                      @if(TECHNOLOGY_ICONS[key]; as icon){
+                        <img [src]="icon" [alt]="key + ' Icon'" class="w-4 h-4 object-contain"/>
+                      }
+                      <span>{{ key }}</span>
+                    </div>
+                  }
+                </div>
+              }
+            </div>
+
+            <div class="order-1 sm:order-2 flex-none">
+              <div class="max-h-20 max-w-45 pl-2  bg-transparent border-none shadow-none drop-shadow-2xl dark:rounded-lg dark:border dark:border-gray-100 dark:bg-white p-2 dark:shadow-sm">
+                <img
+                  [src]="job.img" [alt]="job.place + ' Logo'"
+                  (click)="openLink(job.companyLink)"
+                  class="max-h-full max-w-full object-contain cursor-pointer"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>
+

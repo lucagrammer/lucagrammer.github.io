@@ -1,0 +1,67 @@
+<div class="mt-0 sm:mt-3 lg:mt-5 flex flex-wrap items-center sm:items-start justify-center mb-12">
+
+  <div class="w-full sm:w-6/12">
+    <h1 class="text-3xl font-bold mb-1 colored-text colored-text-var2 ">Hi,</h1>
+    <p>
+      I'm Luca.
+      I build software that balances technical complexity with elegant design.
+    </p>
+    <p>
+      I studied <i>Computer Engineering</i> and I got a master's
+      degree in <i>Computer Science and Engineering</i> at Politecnico di
+      Milano in July 2022.
+    </p>
+
+    <p>
+      Currently, I'm an <span class="colored-text">IT consultant</span> at
+      Technology Reply, where I design and maintain critical
+      <span class="colored-text colored-text-var2">credit risk systems</span> for the banking industry.
+    </p>
+
+    <p>
+      Before diving into fintech, I spent time at Politecnico di Milano (DEIB),
+      contributing to bioinformatics and data analysis projects.
+    </p>
+
+    <p>
+      I’m a <span class="colored-text">full-stack engineer</span> by trade,
+      but a <span class="colored-text colored-text-var2">front-end enthusiast</span> at heart.
+      I thrive on turning complex requirements into robust functionality.
+    </p>
+
+    <app-focus-text-carousel/>
+
+    <!-- Call to actions -->
+    <div class="mt-6 flex space-x-4">
+      <a matButton="elevated" [href]="MAIL_URL" class="motion-safe:animate-shake">
+        <mat-icon aria-hidden="false" aria-label="Email icon">email</mat-icon>
+        <span>Get in touch</span>
+      </a>
+      <a matButton="elevated" [href]="LINKEDIN_URL" target="_blank" class="custom-btn bg-[#0a66c2]! hover:bg-[#084d91]! text-white!">
+        <mat-icon svgIcon="linkedin" aria-hidden="false" aria-label="Linkedin icon"/>
+        <span>LinkedIn</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="w-4/12 pl-8 not-sm:hidden">
+    <!-- Profile image -->
+    <img priority ngSrc="assets/images/profile.png" alt="Profile image"
+         class="object-cover w-62.5 max-w-full rounded-full aspect-square animate-bg-rotate shadow-lg"
+         height="560" width="560">
+
+    <!-- Glanceable info -->
+    <div>
+      <div class="mx-auto w-45 text-sm mt-4 space-y-2 flex flex-col justify-center align-middle">
+        @for(infoLine of infoLines; track $index){
+          <div class="flex items-center ">
+            <mat-icon aria-hidden="false" [attr.aria-label]="infoLine.label" class="mr-2 text-primary">{{infoLine.icon}}</mat-icon>
+            <span>{{infoLine.text}}</span>
+          </div>
+        }
+      </div>
+    </div>
+
+  </div>
+
+</div>
